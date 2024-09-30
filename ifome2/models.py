@@ -21,3 +21,11 @@ def foto_url(self):
             return self.foto.url
         else:
             return "D:\IFome\IFOME\static\css\media" 
+
+class Usuario(models.Model):
+    username = models.CharField(max_length=150, unique=True)
+    curso = models.CharField(max_length=100)
+    password = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.username

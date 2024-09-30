@@ -14,18 +14,27 @@
     <section class="area-login">
         <div class="login">
             <div>
-                <img src="{% static 'css/imagens/Logotipo_IFET.svg' %}">
+                <img src="{% static 'css/imagens/Logotipo_IFET.svg' %}" alt="Logotipo IFET">
             </div>
 
             <form method="POST">
                 {% csrf_token %}
-                <input type="text" name="nome" placeholder="Nome de usuário" autofocus required>
+                <input type="text" name="username" placeholder="Nome de usuário" autofocus required>
                 <input type="text" name="curso" placeholder="Curso" required>
                 <input type="password" name="senha" placeholder="Senha" required autocomplete="new-password">
                 <input type="password" name="repetir_senha" placeholder="Repetir senha" required autocomplete="new-password">
                 <input type="submit" value="Cadastrar">
             </form>
-            <p>Você já tem uma conta?<a href="{% url 'login' %}">Fazer Login</a></p>
+
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>Você já tem uma conta? <a href="{% url 'login' %}">Fazer Login</a></p>
             <p><a href="{% url 'ifome' %}">Voltar Para Tela Inicial</a></p>
         </div>
     </section>
